@@ -2,6 +2,10 @@
 
 Ideas for new angular2-apollo API and other things (or not).
 
+### [Bootstrap](bootstrap.ts)
+
+By using `provideClient(client: ApolloClient)` and `APOLLO_PROVIDERS`.
+
 ### Basic methods
 
 - [`watchQuery()`](watchQuery.ts) - same as ApolloClient.watchQuery()
@@ -11,6 +15,6 @@ Ideas for new angular2-apollo API and other things (or not).
 
 It means they are being rebuilt if their variables change, but only those that came from a component.
 
-- [Using methods](reactive_methods.ts)
+#### [Using methods](reactive_methods.ts)
 
-- [Using decorator](reactive_decorator.ts)
+#### [Using decorator](reactive_decorator.ts)
