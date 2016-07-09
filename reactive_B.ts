@@ -34,7 +34,7 @@ interface DataQuery extends Query {
 })
 class App {
   data: DataQuery;
-  tag: string;
+  tag: string = 'photos';
 
   constructor(
     private apollo: Apollo
@@ -56,6 +56,11 @@ class App {
         tag: component.tag
       }
     }));
+
+    // data query rebuilds
+    setTimeout(() => {
+      this.tag = 'videos';
+    }, 500);
   }
 
   // define reply

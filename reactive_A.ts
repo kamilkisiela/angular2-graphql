@@ -83,7 +83,14 @@ interface DataQuery extends Query {
 })
 class App {
   data: DataQuery;
-  tag: string;
+  tag: string = 'photos';
   topicId: string;
   reply: (raw: string) => Promise<GraphQLResult>;
+
+  ngOnInit() {
+    // data query rebuilds
+    setTimeout(() => {
+      this.tag = 'videos';
+    }, 500);
+  }
 }
