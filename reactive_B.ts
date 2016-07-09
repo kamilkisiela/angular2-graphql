@@ -27,8 +27,8 @@ interface DataQuery extends Query {
 @Component({
   selector: 'app',
   template: `
-    <ul>
-      <li></li>
+    <ul *ngIf="!data.loading">
+      <li *ngFor="let post of data.posts"></li>
     </ul>
   `
 })
@@ -56,5 +56,32 @@ class App {
         tag: component.tag
       }
     }));
+  }
+
+  // define reply
+  reply(raw: string) {
+    const topicId = this.topicId;
+
+    return this.apolo.mutate({
+      // define mutation of reply
+      mutation: gql`
+        mutation postReply(
+          $topic_id: ID!
+          $raw: String!
+        ) {
+          createPost(
+            topic_id: $topic_id
+            raw: $raw
+          ) {
+            id
+          }
+        }
+      `,
+      // define variables of reply
+      variables: {
+        topic_id: topicId,
+        raw,
+      }
+    })
   }
 }

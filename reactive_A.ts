@@ -27,8 +27,8 @@ interface DataQuery extends Query {
 @Component({
   selector: 'app',
   template: `
-    <ul>
-      <li></li>
+    <ul *ngIf="!data.loading">
+      <li *ngFor="let post of data.posts"></li>
     </ul>
   `
 })

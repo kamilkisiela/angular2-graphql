@@ -3,14 +3,18 @@ import {
 } from '@angular/core';
 
 import {
-  Apollo
+  Apollo,
+  ApolloQueryPipe
 } from 'angular2-apollo';
 
 @Component({
   selector: 'app',
+  pipes: [
+    ApolloQueryPipe
+  ],
   template: `
     <ul>
-      <li></li>
+      <li *ngFor="let post of data | async | apolloQuery: 'posts'"></li>
     </ul>
   `
 })

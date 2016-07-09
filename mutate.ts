@@ -13,20 +13,19 @@ import {
 @Component({
   selector: 'app',
   template: `
-    <ul>
-      <li></li>
-    </ul>
+    <button (click)="reply('static')"></button>
   `
 })
 class App {
+  topicId: number = 12;
+
   constructor(
     private apollo: Apollo;
   ) {}
 
-  postReply({
-    topicId,
-    raw
-  }) {
+  reply(raw: string) {
+    const topicId = this.topicId;
+
     this.apollo.mutate({
       mutation: gql`
         mutation postReply(
